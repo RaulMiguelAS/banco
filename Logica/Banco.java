@@ -1,3 +1,5 @@
+package Logica;
+
 import java.util.LinkedList;
 
 
@@ -12,24 +14,21 @@ public class Banco{
         return numConta;
     }
     public void sacarValor(int numConta, double valor){
-        for (int i = 0; i < contas.size(); i++){
-            Conta conta =new Conta(numConta);
+        for (Conta conta : contas){
             if(conta.getNumero() == numConta){
                 conta.sacar(valor);
             }
         }    
     }
     public void depositar(int numConta,double valor){
-        for (int i = 0; i < contas.size(); i++){
-            Conta conta =new Conta(numConta);
+        for (Conta conta : contas){
             if(conta.getNumero() == numConta){
                 conta.depositar(valor);
             }
         } 
     }
     public void transferir(int numContaOri,int numContaDes, double valor) {
-        for (int i = 0; i < contas.size(); i++){
-            Conta conta =new Conta(numContaOri);
+        for (Conta conta : contas){
             if(conta.getNumero() == numContaOri){
                 conta.sacar(valor);
             }
@@ -37,5 +36,14 @@ public class Banco{
                 conta.depositar(valor);
             }
         } 
+    }
+    public double ConsultarSaldo(int numConta){
+        for (Conta conta : contas){
+            if(conta.getNumero()== numConta){
+                return conta.getSaldo();
+            }
+        } 
+        
+        return 1;
     }
 }

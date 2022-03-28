@@ -1,8 +1,11 @@
+package Interface;
 import java.util.Scanner;
+
+import Logica.Banco;
 
 public class BancoPrincipal{
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+        Scanner     s = new Scanner(System.in);
         Banco bancoUnicap = new Banco();
      
         byte op = 0;
@@ -34,6 +37,21 @@ public class BancoPrincipal{
                     double sacar = s.nextInt();
                     bancoUnicap.sacarValor(numero, sacar);
                 break;
+                case 4:
+                System.out.println("Qual o número da conta origem?");
+                int numOrigem=s.nextInt();
+                System.out.println("Qual é o número da conta destino");
+                int numDest=s.nextInt();
+                System.out.println("Qual o valor a ser transferido?");
+                double valor=s.nextDouble();
+                bancoUnicap.transferir(numOrigem, numDest, valor);
+                break;
+                case 5:
+                System.out.println("Insira o número da conta");
+                numero=s.nextInt();
+                 valor =bancoUnicap.ConsultarSaldo(numero);
+                System.out.println("o saldo da conta é: " + valor);
+                break;
                 default: System.out.println("Insira uma opção válida.");
                     break;
             }
@@ -44,6 +62,7 @@ public class BancoPrincipal{
         System.out.println("   2 - Depositar");
         System.out.println("   3 - Sacar");
         System.out.println("   4 - Transferir");
+        System.out.println("   5 - Consultar saldo da conta");
         System.out.println("   0 - Sair do programa");
     }
  }
